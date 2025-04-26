@@ -41,7 +41,7 @@ This project predicts flight delay categories using historical and real-time dat
 
 ![Directory Structure](figs/Structure.png)
 
-## 📦 Getting Started
+## 🚀 Getting Started
 
 1️⃣ **Create a Virtual Environment**
 ```
