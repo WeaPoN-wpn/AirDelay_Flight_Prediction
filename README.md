@@ -41,4 +41,27 @@ This project predicts flight delay categories using historical and real-time dat
 
 ![Directory Structure](figs/Structure.png)
 
+## 📦 Getting Started
 
+1️⃣ **Create a virtual environment**
+```
+python -m venv venv
+```
+* Windows
+```
+venv\Scripts\activate
+```
+* Linux/MacOS
+```
+source venv/bin/activate
+```
+
+2️⃣ **Install dependencies**
+```
+pip install -r requirements.txt
+```
+
+3️⃣ **Launch the web application**
+```
+streamlit run app.py
+```
