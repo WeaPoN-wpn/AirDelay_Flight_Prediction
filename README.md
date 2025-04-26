@@ -43,7 +43,7 @@ This project predicts flight delay categories using historical and real-time dat
 
 ## 📦 Getting Started
 
-1️⃣ **Create a virtual environment**
+1️⃣ **Create a Virtual Environment**
 ```
 python -m venv venv
 ```
@@ -56,12 +56,12 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-2️⃣ **Install dependencies**
+2️⃣ **Install Dependencies**
 ```
 pip install -r requirements.txt
 ```
 
-3️⃣ **Launch the web application**
+3️⃣ **Launch the Web Application**
 ```
 streamlit run app.py
 ```
