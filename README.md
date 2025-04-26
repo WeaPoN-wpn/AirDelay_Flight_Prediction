@@ -12,7 +12,7 @@ This project predicts flight delay categories using historical and real-time dat
 
     - **Reference Link**: [Ollama GitHub](https://github.com/ollama/ollama)
 
-## Features Overview
+## 🚀 Features Overview
 
 ### Part 1: Prediction Interface
 - User inputs flight details (airline, airports, datetime, etc.)
@@ -29,7 +29,7 @@ This project predicts flight delay categories using historical and real-time dat
 
 ![EDA of Training Data](figs/Traindata_EDA.png)
 
-### Part 3: LLM-Based Flight Assistant
+### Part 3: LLM-Based Flight Chatbot
 - Users can describe flights in natural language
 - The system extracts structured information (slots) through LLM
 - If information is incomplete, follow-up questions are generated
