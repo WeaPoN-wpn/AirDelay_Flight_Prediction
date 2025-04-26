@@ -8,6 +8,6 @@ This project predicts flight delay categories using historical and real-time dat
 
 2. If you want to change the model, please change `def query_ollama_chat()` in **llm_dialogue_2.py** accordingly.
     
-    [Ollama Model Library](https://ollama.com/library) - Please search for the model you need and launch it before running this project.
+    [library (ollama.com)](https://ollama.com/library)is the ollama model library, please search for the model you need and launch it before running this project.
 
     - [Reference Link](https://github.com/ollama/ollama)
