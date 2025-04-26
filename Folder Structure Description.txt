@@ -1,0 +1,84 @@
+project/
+│
+├── models/                             # ✅ 模型相关文件
+│   ├── best_model.pt                   # 训练好的 PyTorch 模型
+│   ├── embedding_dims.json             # 类别特征嵌入维度
+│   └── label_encoders.json             # LabelEncoder 编码信息
+│
+├── src/                                # ✅ 代码模块（功能分离）
+│   ├── __init__.py
+│   ├── utils.py                        # 原本工具函数（如 preprocess_date）
+│   ├── model.py                        # 原始预测逻辑
+│   ├── feature_engineering_1.py        # 特征构造逻辑（season, rush hour 等）
+│   ├── llm_dialogue_2.py               # 多轮 LLM 对话 slot 提取逻辑
+│   └── model_utils_3.py                # 模型加载 + 预测 + 解释函数
+│
+├── data/                               # ✅ 支撑性数据
+│   ├── lookup_dicts.pkl                # 平均延误时间映射字典
+│   └── airports_timezone.csv           # IATA ↔️ 城市 ↔️ 时区映射表
+│
+├── mapping/                            # ✅ 可视化、统计类 CSV（EDA 使用）
+│   ├── airline_avg_arr_delay.csv
+│   ├── airline_avg_dep_delay.csv
+│   ├── dest_avg_arr_delay.csv
+│   └── origin_avg_dep_delay.csv
+│
+├── venv/                               # 🧪 虚拟环境（可加 .gitignore）
+│
+├── streamlit_app.py                    # ✅ 主入口：Streamlit 应用
+├── requirements.txt                    # ✅ 所有依赖包说明
+└── README.md                           # 📘 项目说明（建议添加）
+
+1. models/
+	best_model.pt：存储训练好的 PyTorch 模型，这个模型用来预测航班延误类别。
+	embedding_dims.json：存储各个嵌入特征的维度配置，以用于模型的嵌入层。
+	label_encoders.json：存储训练阶段生成的标签编码器，用于在预测阶段的类别编码和解码，以确保一致性。
+2. src/
+	__init__.py：空文件，用来标识 src 文件夹为一个 Python 包，方便其他文件导入 src 包中的模块和函数。
+	utils.py：包含多个辅助函数，用于数据预处理、特征创建和编码处理。例如，加载标签编码器、创建特征、分类 RushHour 等功能。
+	model.py：包含模型定义和加载的相关代码，以及进行预测的函数。包括定义 DelayPredictor 类和 predict 函数。
+3. mapping/
+	airline_avg_arr_delay.csv：存储每个航空公司平均到达延误时间的数据。
+	airline_avg_dep_delay.csv：存储每个航空公司平均出发延误时间的数据。
+	dest_avg_arr_delay.csv：存储每个目的地机场平均到达延误时间的数据。
+	origin_avg_dep_delay.csv：存储每个起点机场平均出发延误时间的数据。
+4. venv/
+	存储虚拟环境相关文件和目录：包含 Python 虚拟环境所需的所有库和依赖，以便项目隔离和管理。
+5. app.py
+	主入口文件，基于 Streamlit 搭建的 Web 应用：
+	Part 1: Prediction App
+		用户可输入航空公司、起降机场、航班时间、延误情况等信息；
+		后端使用训练好的模型预测航班到达延误等级；
+		实时展示延误等级预测结果及其概率分布。
+	Part 2: Exploratory Data Analysis (EDA)
+		集成数据可视化分析页面，包含 5 大板块：
+		Delay Category Distribution：展示目标变量 DelayCategory 的定义与分布（条形图 + 表格）
+		Numerical Features Summary：对 DepDelay, ArrDelay, ActualElapsedTime 等数值特征进行
+描述统计和直方图展示
+		Average Arrival Delay by Airline：展示各航司的平均延误条形图（按延误排序）
+		Top Airports by Delay：显示出发/到达延误最严重的前 10 个机场
+		Time-related Delay Trends：按照 RushHour、Season、IsWeekend、IsStartOrEndOfMonth 四类时间特征展示延误趋势
+	Part 3: LLM-based Flight Assistant
+    		用户可通过自然语言描述航班信息（如“我搭乘Delta Airlines从洛杉矶飞往波士顿，上午8:15起飞”）；
+    		系统会使用大语言模型提取结构化字段（如起点、终点、时间等），补全特征；
+    		模型进行延误等级预测，并由 LLM 提供解释性输出；
+    		支持多轮对话方式，若输入信息不完整，系统将提示用户补充。
+6. requirements.txt
+	项目依赖文件：列出项目需要的所有库和版本，以便通过 pip install -r requirements.txt 安装所有依赖项。
+7. 新增模块说明（LLM Assistant 支持部分）
+
+	data/airports_timezone.csv  
+		机场名称、城市、IATA 三字码与对应时区的映射表；  
+		用于 LLM Assistant 模块在缺少标准 IATA 输入时进行名称匹配与时区换算。
+
+	src/feature_engineering_1.py  
+		包含构造模型输入特征所需的函数模块，如 season、rush hour、是否节假日等；  
+		与原模型特征一致，用于从用户自然语言中生成结构化特征向量。
+
+	src/llm_dialogue_2.py  
+		基于大语言模型（如 HuggingFace-hosted Mistral）的多轮对话解析模块；  
+		支持自然语言输入的航班信息提取，并支持 Streamlit 页面上的连续交互式字段补充。
+
+	src/model_utils_3.py  
+		集成模型加载、编码器应用与 Softmax 预测逻辑；  
+		支持输出预测结果及对应概率，同时通过 LLM 生成用户可读的解释信息。
