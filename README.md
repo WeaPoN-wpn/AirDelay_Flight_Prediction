@@ -11,3 +11,24 @@ This project predicts flight delay categories using historical and real-time dat
     [library (ollama.com)](https://ollama.com/library) is the ollama model library, please search for the model you need and launch it before running this project.
 
     - **Reference Link**: [Ollama GitHub](https://github.com/ollama/ollama)
+
+## Features Overview
+
+### Part 1: Prediction Interface
+- User inputs flight details (airline, airports, datetime, etc.)
+- Model returns delay category and probability distribution in real-time
+
+![Prediction Interface](figs/Prediction Interface.png)
+
+### Part 2: Exploratory Data Analysis (EDA)
+- Delay category distribution
+- Histograms of numerical features
+- Average arrival delays per airline
+- Most delayed airports
+- Delay trends by time-related features
+
+### Part 3: LLM-Based Flight Assistant
+- Users can describe flights in natural language
+- The system extracts structured information (slots) through LLM
+- If information is incomplete, follow-up questions are generated
+- The final prediction is explained to the user
