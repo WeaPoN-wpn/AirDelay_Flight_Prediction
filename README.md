@@ -12,7 +12,7 @@ This project predicts flight delay categories using historical and real-time dat
 
     - **Reference Link**: [Ollama GitHub](https://github.com/ollama/ollama)
 
-## 🚀 Features Overview
+## 🔍 Features Overview
 
 ### Part 1: Prediction Interface
 - User inputs flight details (airline, airports, datetime, etc.)
@@ -36,5 +36,37 @@ This project predicts flight delay categories using historical and real-time dat
 - The final prediction is explained to the user
 
 ![Chatbot](figs/Chatbot.png)
+
+### 📂 Directory and Function Description
+project/
+│
+├── models/                             # Model-related files
+│   ├── best_model.pt                   # Trained PyTorch model
+│   ├── embedding_dims.json             # Embedding dimensions for categorical features
+│   └── label_encoders.json             # LabelEncoder encoding information
+│
+├── src/                                # Core code modules
+│   ├── init.py
+│   ├── utils.py                        # Contains several helper functions for data preprocessing, feature creation, and encoding processing
+│   ├── model.py                        # Contains model definition and loading codes, as well as prediction functions
+│   ├── feature_engineering_1.py        # Feature construction logic
+│   ├── llm_dialogue_2.py               # Multi-turn LLM dialogue slot extraction logic
+│   └── model_utils_3.py                # Model loading + prediction + explanation functions
+│
+├── data/                               # Supporting data
+│   ├── lookup_dicts.pkl                # Average delay time mapping dictionary
+│   └── airports_timezone.csv           # IATA ↔️ City ↔️ Timezone mapping table
+│
+├── mapping/                            # Visualization, statistical data
+│   ├── airline_avg_arr_delay.csv
+│   ├── airline_avg_dep_delay.csv
+│   ├── dest_avg_arr_delay.csv
+│   └── origin_avg_dep_delay.csv
+│
+├── venv/                               # Virtual environment
+│
+├── app.py                              # Streamlit application
+├── requirements.txt                    # All dependencies
+└── README.md                           # Project description
 
 
