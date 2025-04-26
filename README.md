@@ -39,6 +39,6 @@ This project predicts flight delay categories using historical and real-time dat
 
 ### 📂 Directory and Function Description
 
-![EDA of Training Data](figs/Traindata_EDA.png)
+![Directory Structure](figs/Structure.png)
 
 
