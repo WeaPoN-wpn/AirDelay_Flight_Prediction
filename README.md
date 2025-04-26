@@ -18,7 +18,7 @@ This project predicts flight delay categories using historical and real-time dat
 - User inputs flight details (airline, airports, datetime, etc.)
 - Model returns delay category and probability distribution in real-time
 
-![Prediction Interface](figs/Prediction Interface.png)
+![Prediction Interface](figs/Prediction_Interface.png)
 
 ### Part 2: Exploratory Data Analysis (EDA)
 - Delay category distribution
@@ -27,7 +27,7 @@ This project predicts flight delay categories using historical and real-time dat
 - Most delayed airports
 - Delay trends by time-related features
 
-![EDA of Training Data](figs/Traindata EDA.png)
+![EDA of Training Data](figs/Traindata_EDA.png)
 
 ### Part 3: LLM-Based Flight Assistant
 - Users can describe flights in natural language
