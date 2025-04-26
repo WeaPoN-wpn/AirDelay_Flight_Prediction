@@ -10,4 +10,4 @@ This project predicts flight delay categories using historical and real-time dat
     
     [library (ollama.com)](https://ollama.com/library) is the ollama model library, please search for the model you need and launch it before running this project.
 
-    - [Reference Link](https://github.com/ollama/ollama)
+    - **Reference Link**: [Ollama GitHub](https://github.com/ollama/ollama)
