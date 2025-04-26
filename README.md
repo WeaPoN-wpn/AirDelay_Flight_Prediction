@@ -27,8 +27,14 @@ This project predicts flight delay categories using historical and real-time dat
 - Most delayed airports
 - Delay trends by time-related features
 
+![EDA of Training Data](figs/Traindata EDA.png)
+
 ### Part 3: LLM-Based Flight Assistant
 - Users can describe flights in natural language
 - The system extracts structured information (slots) through LLM
 - If information is incomplete, follow-up questions are generated
 - The final prediction is explained to the user
+
+![Chatbot](figs/Chatbot.png)
+
+
