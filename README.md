@@ -4,7 +4,7 @@ This project predicts flight delay categories using historical and real-time dat
 ## ‼️Prerequisite
 1. Ollama needs to be installed and configured locally in advance.
 
-    - [Reference Link](https://www.cnblogs.com/obullxl/p/18295202/NTopic2024071001)
+    - **Reference Link**: [Ollama Installation Tutorial](https://www.cnblogs.com/obullxl/p/18295202/NTopic2024071001)
 
 2. If you want to change the model, please change `def query_ollama_chat()` in **llm_dialogue_2.py** accordingly.
     
