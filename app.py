@@ -42,13 +42,13 @@ if section == "🔮 Flight Delay Prediction":
     embedding_cols = ["Airline", "Origin", "Dest"]
     dummy_cols = ["RushHour", "Season", "IsWeekend", "IsStartOrEndOfMonth"]
 
-    airline_input = st.text_input('✈️ 请输入航空公司IATA代码:', '9E')
-    origin_input = st.text_input('🛫 请输入起点机场IATA代码:', 'BGM')
-    dest_input = st.text_input('🛬 请输入终点机场IATA代码:', 'DTW')
-    date_input = st.date_input('📅 请输入航班日期:', pd.Timestamp(2023, 1, 1))
-    dep_time_input = st.text_input('⏰ 请输入出发时间 (HHMM):', '1600')
-    dep_delay_input = st.text_input('⏳ 请输入出发延误时间 (分钟):', '0')
-    elapsed_time_input = st.text_input('🕒 请输入飞行时间 (分钟):', '60')
+    airline_input = st.text_input('✈️ Enter Airline IATA Code:', '9E')
+    origin_input = st.text_input('🛫 Enter Origin Airport IATA Code:', 'BGM')
+    dest_input = st.text_input('🛬 Enter Destination Airport IATA Code:', 'DTW')
+    date_input = st.date_input('📅 Select Flight Date:', pd.Timestamp(2023, 1, 1))
+    dep_time_input = st.text_input('⏰ Enter Departure Time (HHMM):', '1600')
+    dep_delay_input = st.text_input('⏳ Enter Departure Delay (minutes):', '0')
+    elapsed_time_input = st.text_input('🕒 Enter Flight Duration (minutes):', '60')
 
     # 加载模型和编码器
     model = load_model()
@@ -71,25 +71,26 @@ if section == "🔮 Flight Delay Prediction":
     st.json(df_inputs.to_dict(orient='records')[0])
 
     # 显示预测概率
-    st.subheader('📊 预测结果:')
+    st.subheader('📊 Prediction:')
     label_enc_dict = encoders['DelayCategory']
     classes = label_enc_dict.classes_
 
     prob_percent = [f"{p * 100:.2f}%" for p in prob[0]]
     for cls, prob in zip(classes, prob_percent):
-        st.markdown(f"**{cls}** 的概率: {prob}")
+        st.markdown(f"The probability of **{cls}** is : {prob}")
 
     # 显示最可能的延误类别和表情
-    st.markdown(f"### 🎯 预测的延误类别: **{classes[category[0]]}**")
+    # Display the most likely delay category and emoji
+    st.markdown(f"### 🎯 Predicted Delay Category: **{classes[category[0]]}**")
 
     if category[0] == 0:
-        st.markdown("### 🟢 航班将准时或提前到达！")
+        st.markdown("### 🟢 Flight will be on time or early!")
     elif category[0] == 1:
-        st.markdown("### 🟡 航班将有轻微延误。")
+        st.markdown("### 🟡 Flight will have a minor delay.")
     elif category[0] == 2:
-        st.markdown("### 🟠 航班将有中等延误。")
+        st.markdown("### 🟠 Flight will have a moderate delay.")
     else:
-        st.markdown("### 🔴 航班将有严重延误。")
+        st.markdown("### 🔴 Flight will have a severe delay.")
 
 ## 📊 Part 2: EDA Dashboard
 elif section == "📊 Exploratory Data Analysis":
